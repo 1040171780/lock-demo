@@ -33,7 +33,7 @@ public class ReentrantLockInterruptibly {
     }
     public void test() throws InterruptedException {
         System.out.println(Thread.currentThread().getName() + "想获取锁" + getTime());
-        lock.lockInterruptibly();
+        lock.lockInterruptibly();//注意，如果需要正确中断等待锁的线程，必须将获取锁放在外面，然后将InterruptedException抛出
         try {
             System.out.println(Thread.currentThread().getName() + "获得到锁" + getTime());
             Thread.sleep(10000);
